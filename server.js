@@ -6,8 +6,14 @@ const App = express();
 const bodyParser =require('body-parser');
 App.use(bodyParser.urlencoded({extended:true}));
 
+const MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb+srv://eunkyeong01234:cupido112^^@mmoommooo.a9d4mbj.mongodb.net/?retryWrites=true&w=majority',(error,client)=>{
 App.listen(8080, function(){
+    console.log('연결완료?')
 })
+})
+
+
 //포트번호, 띄운후에 실행할코드
 
 App.get('/pet',(request,response)=>{
@@ -29,3 +35,4 @@ App.post('/add',(request,response)=>{
     response.send('전송완료');
     console.log(request.body.goal);
 })
+

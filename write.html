@@ -9,6 +9,55 @@
     <script src="https://kit.fontawesome.com/969baeb221.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <style>
+        /* CSS Reset */
+* { box-sizing: border-box; } 
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,
+strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,
+ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,article,aside,
+canvas,details,embed,figure,figcaption,footer,header,
+hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video { margin: 0; padding: 0; border: 0; font-size: 100%; } 
+article,aside,details,figcaption,figure,footer,
+header,hgroup,menu,nav,section { display: block; } 
+body { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; color: #333; } 
+ol,ul { list-style: none; } 
+table { border-collapse: collapse; border-spacing: 0; } 
+address { font-style: normal; } 
+a { color: #333; text-decoration: none; } 
+img { border: 0; vertical-align: top; } 
+.hidden { display: block; color: #fff; position: absolute; left: -1000px; top: 0; height: 1px; width: 1px; overflow: hidden; } 
+
+.go_top { z-index: 50; display: block; position: fixed; bottom: 100px; left:50%; margin-left: 700px; width: 80px; height: 80px; background: #3678fe; } 
+.go_top img { margin: 15px 20px 15px 30px; width: 10px; transition: all .3s ease-out; transform: translateY(10px); } 
+.go_top:hover img { transform: translateY(5px); } 
+.wrap { width: 100%; overflow: hidden; position: relative; } 
+.p_r{position: relative;}
+
+
+/* header */
+
+header{width: 100%; padding: 15px 0; background: #005C53; color:#DBF227}
+.headerInner{width: 96%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;}
+.headerInner nav ul {width: 60%; display: flex; justify-content: space-between; align-items: center;}
+.headerInner ul li h3 a {color:#DBF227; font-size:1.5rem}
+footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
+.footerInner{width: 96%; margin: 0 auto; text-align: center;}
+
+
+
+.writeFormWrap{ width: 80%; margin: 50px auto 100px;}
+.writeFormWrap label{ display: block; font-size: 1.12rem; font-weight: 700;margin-bottom: 20px;}
+.writeFormWrap input, .writeFormWrap textarea{ display: block; border-radius: 5px; width: 100%; border: 1px solid #9FC131; padding: 10px; margin-bottom: 20px;} 
+
+.inputbox{height: 300px; margin-bottom: 20px;}
+.inputbox textarea{height: 100%;}
+
+.writeFormWrap button{border: none; background: #9FC131; color:#fff; padding: 10px; border-radius: 10px;}
+
+
+    </style>
     <header>
         <div class="headerInner">
             <h1><a href="./index.html"></a>BLOG</h1>
@@ -29,12 +78,15 @@
     </header>
     <main>
         <div class="writeFormWrap">
-            <form action="" name="" method="post">
-                <label for="title">제목</label>
-                <input type="text" name="title" id="title">
-                <label for="subject">내용</label>
+            <form action="/add" method="post">
+                <label for="goal">Goal</label>
+                <input type="text" name="goal" id="goal">
+                <label for="dueDate">Due Date</label>
+                <input type="text" name="dueDate" id="dueDate">
+                <label for="todoList">ToDo List</label>
                 <div class="inputbox">
-                    <input type="textarea" name="subjet" id="subject">
+                    <textarea name="todoList" rows="10" cols="100" id="todoList">
+                </textarea>
                 </div>
                 <button>글쓰기</button>
             </form>

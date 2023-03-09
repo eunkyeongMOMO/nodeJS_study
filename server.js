@@ -3,8 +3,10 @@ const { response } = require('express');
 const express =require('express');
 const App = express();
 
+const bodyParser =require('body-parser');
+App.use(bodyParser.urlencoded({extended:true}));
+
 App.listen(8080, function(){
-    console.log('server open')
 })
 //포트번호, 띄운후에 실행할코드
 
@@ -17,4 +19,13 @@ App.get('/beauty',(request,response)=>{
 //html 파일 보내는방법 
 App.get('/',(request, response)=>{
     response.sendfile(__dirname + '/index.html');
+})
+
+App.get('/write',(request, response)=>{
+    response.sendfile(__dirname+'/write.html')
+})
+
+App.post('/add',(request,response)=>{
+    response.send('전송완료');
+    console.log(request.body.goal);
 })

@@ -37,10 +37,10 @@ footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
 
 .writeFormWrap{ width: 80%; margin: 50px auto 100px;}
 .writeFormWrap label{ display: block; font-size: 1.12rem; font-weight: 700;margin-bottom: 20px;}
-.writeFormWrap input{ display: block; border-radius: 5px; width: 100%; border: 1px solid #9FC131; padding: 10px; margin-bottom: 20px;} 
+.writeFormWrap input, .writeFormWrap textarea{ display: block; border-radius: 5px; width: 100%; border: 1px solid #9FC131; padding: 10px; margin-bottom: 20px;} 
 
 .inputbox{height: 300px; margin-bottom: 20px;}
-.inputbox input{height: 100%;}
+.inputbox textarea{height: 100%;}
 
 .writeFormWrap button{border: none; background: #9FC131; color:#fff; padding: 10px; border-radius: 10px;}
 

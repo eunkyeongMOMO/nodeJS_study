@@ -6,10 +6,20 @@ const App = express();
 const bodyParser =require('body-parser');
 App.use(bodyParser.urlencoded({extended:true}));
 
+let db;
+
 const MongoClient = require('mongodb').MongoClient;
 MongoClient.connect('mongodb+srv://eunkyeong01234:cupido112^^@mmoommooo.a9d4mbj.mongodb.net/?retryWrites=true&w=majority',(error,client)=>{
+if(error){return console.log(error);}
+
+db = client.db('ToDoApp');
+db.collection('post').insertOne({_id:01, name:'eunkyeong', age:33},(error,result)=>{
+    console.log('저장완료');
+    //데이터저장할때 꼭 id넣는게 좋음
+});
+
 App.listen(8080, function(){
-    console.log('연결완료?')
+    console.log('연결완료?');
 })
 })
 
@@ -32,7 +42,9 @@ App.get('/write',(request, response)=>{
 })
 
 App.post('/add',(request,response)=>{
-    response.send('전송완료');
-    console.log(request.body.goal);
+    response.send('전송완료')
+    db.collection('post').insertOne({goal:request.bady.goal, dueDate:request.body.dueDate,TodoList:request.body.todolist},(error, result)=>{
+        console.log('투두리스트 저장완료');
+    })
 })
 

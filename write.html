@@ -80,15 +80,12 @@ footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
         <div class="writeFormWrap">
             <form action="/add" method="post">
                 <label for="goal">Goal</label>
-                <input type="text" name="goal" id="goal">
+                <input type="text" name="goal">
                 <label for="dueDate">Due Date</label>
-                <input type="text" name="dueDate" id="dueDate">
+                <input type="text" name="dueDate">
                 <label for="todoList">ToDo List</label>
-                <div class="inputbox">
-                    <textarea name="todoList" rows="10" cols="100" id="todoList">
-                </textarea>
-                </div>
-                <button>글쓰기</button>
+                <input type="text" name="todoList">
+                <button type="submit">글쓰기</button>
             </form>
         </div>
         <footer>

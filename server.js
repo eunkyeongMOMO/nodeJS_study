@@ -1,21 +1,25 @@
 //아래 문법은 기본값, 외우기
-const { response } = require('express');
+// const { response } = require('express');
 const express =require('express');
 const App = express();
 
-const bodyParser =require('body-parser');
+const bodyParser= require('body-parser')
 App.use(bodyParser.urlencoded({extended:true}));
 
 let db;
 
 const MongoClient = require('mongodb').MongoClient;
-MongoClient.connect('mongodb+srv://eunkyeong01234:cupido112^^@mmoommooo.a9d4mbj.mongodb.net/?retryWrites=true&w=majority',(error,client)=>{
+MongoClient.connect('mongodb+srv://eunkyeong01234:cupido112^^@mmoommooo.a9d4mbj.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true } , 
+(error,client)=>{
 if(error){return console.log(error);}
 
 db = client.db('ToDoApp');
-db.collection('post').insertOne({_id:01, name:'eunkyeong', age:33},(error,result)=>{
+db.collection('post').insertOne({_id:1, name:'eunkyeong', age:33},(error,result)=>{
     console.log('저장완료');
     //데이터저장할때 꼭 id넣는게 좋음
+});
+db.collection('post').insertOne({_id:2, name:'simba', age:5},(error,result)=>{
+    console.log('저장완료오오')
 });
 
 App.listen(8080, function(){
@@ -34,16 +38,16 @@ App.get('/beauty',(request,response)=>{
 })
 //html 파일 보내는방법 
 App.get('/',(request, response)=>{
-    response.sendfile(__dirname + '/index.html');
+    response.sendFile(__dirname + '/index.html');
 })
 
 App.get('/write',(request, response)=>{
-    response.sendfile(__dirname+'/write.html')
+    response.sendFile(__dirname+'/write.html')
 })
 
 App.post('/add',(request,response)=>{
     response.send('전송완료')
-    db.collection('post').insertOne({goal:request.bady.goal, dueDate:request.body.dueDate,TodoList:request.body.todolist},(error, result)=>{
+    db.collection('post').insertOne({goal:request.body.goal, dueDate:request.body.dueDate,TodoList:request.body.todoList},(error, result)=>{
         console.log('투두리스트 저장완료');
     })
 })

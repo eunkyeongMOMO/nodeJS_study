@@ -50,7 +50,8 @@ App.post('/add',(request,response)=>{
 App.get('/list',(request,response)=>{
     db.collection('post').find().toArray((error,result)=>{
         console.log(result); 
-        response.render('list.ejs',{posts:result});
+        console.log(result.length); 
+        response.render('list.ejs', { posts : result });
 })
 });
 

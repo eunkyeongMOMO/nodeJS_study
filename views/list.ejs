@@ -72,12 +72,12 @@ footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
     </header>
     <main>
         <div class="contentWrap">
-            <% for (let i=0; i<=posts.length; i++) {%>
+            <% for (let i=0; i<=posts.length-1; i++) {%>
             <ul class="list">
                 <li>
                     <h4>Goal : <%= posts[i].goal %></h4>
                     <strong>Today : <%= posts[i].dueDate %></strong>
-                    <p>ToDoList : <%= posts[i].TodoListe %></p>
+                    <p>ToDoList : <%= posts[i].TodoList %></p>
                 </li>
             </ul>
             <% } %>

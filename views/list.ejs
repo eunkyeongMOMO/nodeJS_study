@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist_View</title>
+    <script src="https://kit.fontawesome.com/969baeb221.js" crossorigin="anonymous"></script>
+</head>
+<body>
+ <style>
+        /* CSS Reset */
+* { box-sizing: border-box; } 
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,
+strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,
+ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,article,aside,
+canvas,details,embed,figure,figcaption,footer,header,
+hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video { margin: 0; padding: 0; border: 0; font-size: 100%; } 
+article,aside,details,figcaption,figure,footer,
+header,hgroup,menu,nav,section { display: block; } 
+body { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; color: #333; } 
+ol,ul { list-style: none; } 
+table { border-collapse: collapse; border-spacing: 0; } 
+address { font-style: normal; } 
+a { color: #333; text-decoration: none; } 
+img { border: 0; vertical-align: top; } 
+.hidden { display: block; color: #fff; position: absolute; left: -1000px; top: 0; height: 1px; width: 1px; overflow: hidden; } 
+
+.go_top { z-index: 50; display: block; position: fixed; bottom: 100px; left:50%; margin-left: 700px; width: 80px; height: 80px; background: #3678fe; } 
+.go_top img { margin: 15px 20px 15px 30px; width: 10px; transition: all .3s ease-out; transform: translateY(10px); } 
+.go_top:hover img { transform: translateY(5px); } 
+.p_r{position: relative;}
+
+
+/* header */
+
+header{width: 100%; padding: 15px 0; background: #005C53; color:#DBF227}
+.headerInner{width: 96%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;}
+.headerInner nav ul {width: 60%; display: flex; justify-content: space-between; align-items: center;}
+.headerInner ul li h3 a {color:#DBF227; font-size:1.5rem}
+footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
+.footerInner{width: 96%; margin: 0 auto; text-align: center;}
+
+/* content css */
+
+.contentWrap{background: #fffeee; width: 100%; height: 100vh;}
+.contentWrap ul{width: 80%; margin:0 auto; padding: 20px 0 20px;position: relative; color: #005C53;} 
+.contentWrap ul strong{display: block; margin: 10px 0;} 
+.contentWrap ul::after{ content:'';height: 1px; width: 90%; background: #005C53; bottom:-5px; display: block; margin: 10px 0;} 
+
+
+    </style>
+    <header>
+        <div class="headerInner">
+            <h1><a href="./index.html"></a>BLOG</h1>
+  
+        <nav>
+            <ul>
+                <li>
+                    <h3>
+                        <a href="./write.html">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <span class="hidden">글쓰기</span>
+                        </a>
+                    </h3>
+                </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <main>
+        <div class="contentWrap">
+            <% for (let i=0; i<=posts.length; i++) {%>
+            <ul class="list">
+                <li>
+                    <h4>Goal : <%= posts[i].goal %></h4>
+                    <strong>Today : <%= posts[i].dueDate %></strong>
+                    <p>ToDoList : <%= posts[i].TodoListe %></p>
+                </li>
+            </ul>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="footerInner">node.JS Project01</div>
+    </footer>
+</body>
+</html>

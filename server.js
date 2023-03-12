@@ -31,26 +31,30 @@ App.get('/beauty',(request,response)=>{
     response.send('뷰티용품을 볼 수 있는 페이지!입니당!');
 })
 //html 파일 보내는방법 
+// App.get('/',(request, response)=>{
+//     response.sendFile(__dirname + '/index.html');
+// })
+
 App.get('/',(request, response)=>{
-    response.sendFile(__dirname + '/index.html');
+    response.render('index.ejs');
 })
 
+
 App.get('/write',(request, response)=>{
-    response.sendFile(__dirname+'/write.html')
+    response.render('write.ejs');
 })
 
 App.post('/add',(request,response)=>{
-    response.send('전송완료')
+    
     db.collection('post').insertOne({goal:request.body.goal, dueDate:request.body.dueDate,TodoList:request.body.todoList},(error, result)=>{
         console.log('투두리스트 저장완료');
     })
+    response.render('add.ejs','전송완료')
      //데이터저장할때 꼭 id넣는게 좋음
 })
 
 App.get('/list',(request,response)=>{
     db.collection('post').find().toArray((error,result)=>{
-        console.log(result); 
-        console.log(result.length); 
         response.render('list.ejs', { posts : result });
 })
 });

@@ -45,9 +45,21 @@ App.get('/write',(request, response)=>{
 })
 
 App.post('/add',(request,response)=>{
-    
-    db.collection('post').insertOne({goal:request.body.goal, dueDate:request.body.dueDate,TodoList:request.body.todoList},(error, result)=>{
-        console.log('투두리스트 저장완료');
+   response.send('전송완료!')
+    //auto increment
+    //게시물 번호 부여하기 위해 다른 컬렉션 생성 후 따로 관리
+    db.collection('postNum').findOne({name:'posting'}, (error, result)=>{
+        console.log(result.totalPosts);
+        let totalPosts = result.totalPosts;
+        db.collection('post').insertOne({_id:totalPosts+1, goal:request.body.goal, dueDate:request.body.dueDate,TodoList:request.body.todoList},(error, result)=>{
+            console.log('투두리스트 저장완료');
+            db.collection('postNum').updateOne({name:'posting'},{$inc:{totalPosts:1}},(error, result)=>{
+                if(error){return console.log(error);} //총게시물갯수도 1늘려서 저장.
+            })
+        })
+        //updateOne({수정할 데이터 이름},{수정값},()=>{})
+        //데이터수정시 어떤식으로 수정할지 operator[연산자]를 써줘야함 $set, $inc
+        //{$inc:{변경할값:얼마나 변경할건지}}}
     })
     response.render('add.ejs','전송완료')
      //데이터저장할때 꼭 id넣는게 좋음

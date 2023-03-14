@@ -71,5 +71,12 @@ App.get('/list',(request,response)=>{
 })
 });
 
-
+App.delete('/delete',(request,response)=>{
+    request.body._id = parseInt(request.body._id);
+    //스트링으로 넘어오는 경우가 있기때문에 정수로 바꾸는 작업해줘야함.
+    db.collection('post').deleteOne(request.body, (result, error)=>{
+        console.log('삭제완료')
+    })
+    //삭제할 항목, 콜백함수
+})
  

@@ -80,7 +80,7 @@ footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
                     <h4>Goal : <%= posts[i].goal %></h4>
                     <strong>Today : <%= posts[i].dueDate %></strong>
                     <p>ToDoList : <%= posts[i].TodoList %></p>
-                        <button class="delete" data-id="<%= posts[i]._id %>">
+                        <button onclick="deleteClick(e)" class="delete" data-id="<%= posts[i]._id %>">
                             <span class="hidden">글삭제</span>
                             <i class="fa-regular fa-trash-can"></i>
                         </button>
@@ -94,15 +94,18 @@ footer{width: 100%; padding: 10px 0; background: #005C53; color:#DBF227}
     </footer>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script>
-        let button = document.querySelectorAll('.delete');
+    let deleteClick=(e)=>{
+        let postingNumber= e.target.dataset.id;
 
-       axios.post('/URL', {})
-        .then((response)=>{
-        console.log(response);
+        axios.delete('/delete',{_id : postingNumber})
+        .then(function (response) {
+            console.log(response);
         })
-        .catch((error)=> {
+        .catch(function (error) {
             console.log(error);
         })
+    }
+  
     </script>
 </body>
 </html>

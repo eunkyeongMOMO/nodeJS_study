@@ -5,7 +5,7 @@
 1. NodeJS 라이브러리 활용
 
 활용한 라이브러리 | 기능 | 설치방법
---|--
+--|--|--
 express | REST 서버를 편리하게 구현하게 해주는 프레임워크 | `npm install express`
 nodemon | VSC에서 파일 저장시 자동으로 서버 재접속 | `npm install nodemon`
 body-parcel |  POST request data의 body로부터 파라미터를 편리하게 추출 (근데 따로 설치안해도됨)
